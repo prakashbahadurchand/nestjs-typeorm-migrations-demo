@@ -7,7 +7,10 @@ export const AppDataSource = new DataSource({
     username: 'root',
     password: 'toor',
     database: 'nestjs_typeorm_migrations_demo_db',
-    entities: [__dirname + '/../features/users/entities/*.js'],
+    entities: [
+        __dirname + '/../core/shared/**/*.entity.js',
+        __dirname + '/../features/**/*.entity.js',
+    ],
     migrations: [__dirname + '/../core/database/migrations/*.js'],
     synchronize: false, // never use TRUE in production!
 });

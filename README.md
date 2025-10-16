@@ -7,8 +7,8 @@ This guide covers the most common migration commands for a NestJS project using 
 ## 🚀 Generate Migration
 
 ```bash
-# Generate a migration based on entity changes
-npx typeorm migration:generate ./src/core/database/migrations/InitUsersTable -d ./dist/config/data-source.config.js
+# Generate a migration based on entity changes first build then generate
+npm run build && npx typeorm migration:generate ./src/core/database/migrations/InitUsersTable -d ./dist/config/data-source.config.js
 ```
 
 ---
