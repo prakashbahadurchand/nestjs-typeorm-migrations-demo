@@ -24,6 +24,10 @@ export class User {
     @Column()
     bio: string;
 
+    @ApiProperty({ example: 'An introduction to the user', description: 'Introduction of the user' })
+    @Column()
+    intro: string;
+
     @ApiProperty({ example: '2024-06-01T12:00:00.000Z', description: 'Date when the user was created' })
     @CreateDateColumn()
     createdAt: Date;

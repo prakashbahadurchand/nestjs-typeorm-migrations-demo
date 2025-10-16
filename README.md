@@ -1,44 +1,48 @@
-# NestJS TypeORM Migrations Demo
+# 🚀 TypeORM Migration Scripts Cheatsheet
 
-This guide covers the most common migration commands for a NestJS project using TypeORM v0.3.x.
+_Recommended for NestJS + TypeORM v0.3.x projects_
 
 ---
 
-## 🚀 Generate Migration
+## Migration Commands
+
+| Command               | Description                      | Usage Example                                  |
+|-----------------------|----------------------------------|------------------------------------------------|
+| `mig:gen`             | Generate new migration           | `npm run mig:gen --name=InitUsersTable`        |
+| `mig:run`             | Apply pending migrations         | `npm run mig:run`                              |
+| `mig:revert`          | Revert last migration            | `npm run mig:revert`                           |
+| `mig:show`            | Show migration status            | `npm run mig:show`                             |
+
+---
+
+## Details
+
+- **mig:gen**  
+  Builds your app, generates a migration with the given name, and shows migration status.  
+  _Migration name must be passed as:_  
+
+  ```
+  --name=YourMigrationName
+  ```
+
+- **mig:run**  
+  Builds your app, applies all pending migrations, then shows migration status.
+
+- **mig:revert**  
+  Reverts the most recent migration and shows updated migration status.
+
+- **mig:show**  
+  Lists all migrations and their applied/pending status.
+
+---
+
+## Quick Reference
 
 ```bash
-# Generate a migration based on entity changes first build then generate
-npm run build && npx typeorm migration:generate ./src/core/database/migrations/InitUsersTable -d ./dist/config/data-source.config.js
+npm run mig:gen --name=InitUsersTable       # Generate migration
+npm run mig:run                            # Run migrations
+npm run mig:revert                         # Revert last migration
+npm run mig:show                           # Show migration status
 ```
 
----
-
-## ▶️ Run Migrations
-
-```bash
-# Apply pending migrations to your database first build then run
-npm run build && npx typeorm migration:run -d ./dist/config/data-source.config.js
-```
-
----
-
-## ⏪ Revert Last Migration
-
-```bash
-# Roll back (undo) the most recent migration
-npx typeorm migration:revert -d ./dist/config/data-source.config.js
-```
-
----
-
-## 📋 Show Migration Status
-
-```bash
-# List all migrations and their status (pending/applied)
-npx typeorm migration:show -d ./dist/config/data-source.config.js
-```
-
----
-
-**Tip:**  
-Always run `npm run build` before migration commands, so TypeORM CLI uses the latest compiled files from `dist/`.
+> **Tip:** Always ensure you run `npm run build` before migration commands (handled automatically above).
